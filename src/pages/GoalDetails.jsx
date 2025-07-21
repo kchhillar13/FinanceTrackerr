@@ -174,7 +174,7 @@ const GoalDetails = ({ darkMode }) => {
                 </p>
 
                 {/* Action Buttons */}
-                <div className="mt-4 flex justify-between">
+                <div className="mt-4 flex justify-between gap-5">
                   <button
                     onClick={() => addMoney(goal.id)}
                     className={`px-3 py-2 rounded-md font-semibold ${

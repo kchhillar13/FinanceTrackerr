@@ -54,7 +54,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             : "bg-gray-200 text-gray-800 hover:bg-gray-300"
         }`}
       >
-        {darkMode ? "🌙 Dark" : "☀️ Light"}
+        {darkMode ? "Dark" : "Light"}
       </button>
     </header>
   );
