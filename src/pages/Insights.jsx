@@ -1,10 +1,9 @@
 import React from "react";
 
 const Insights = ({ darkMode, goals }) => {
-  // Calculate total savings and completion rate
   const totalSavings = goals.reduce((acc, goal) => acc + goal.saved, 0);
   const totalTarget = goals.reduce((acc, goal) => acc + goal.target, 0);
-  const completionRate = ((totalSavings / totalTarget) * 100).toFixed(1);
+  const completionRate = totalTarget > 0 ? ((totalSavings / totalTarget) * 100).toFixed(1) : 0;
 
   const topGoals = [...goals].sort((a, b) => b.saved / b.target - a.saved / a.target).slice(0, 3);
 
@@ -45,9 +44,7 @@ const Insights = ({ darkMode, goals }) => {
                 style={{ width: `${(goal.saved / goal.target) * 100}%` }}
               ></div>
             </div>
-            <p className="text-sm mt-1">
-              {(goal.saved / goal.target * 100).toFixed(1)}% Complete
-            </p>
+            <p className="text-sm mt-1">{((goal.saved / goal.target) * 100).toFixed(1)}% Complete</p>
           </div>
         ))}
       </div>

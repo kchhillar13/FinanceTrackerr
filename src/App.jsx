@@ -17,6 +17,13 @@ function App() {
   const [goals, setGoals] = useState([
     { id: 1, name: "Buy a Car", target: 500000, saved: 150000 },
     { id: 2, name: "Vacation in Bali", target: 150000, saved: 50000 },
+    { id: 3, name: "Emergency Fund", target: 200000, saved: 75000 },
+    { id: 4, name: "New Laptop", target: 80000, saved: 30000 },
+    { id: 5, name: "Wedding Savings", target: 600000, saved: 200000 },
+    { id: 6, name: "Home Renovation", target: 350000, saved: 120000 },
+    { id: 7, name: "Start a Business", target: 1000000, saved: 250000 },
+    { id: 8, name: "Kid's Education Fund", target: 500000, saved: 100000 },
+    { id: 9, name: "World Tour", target: 750000, saved: 200000 },
   ]);
 
   return (
@@ -28,11 +35,20 @@ function App() {
       >
         <BrowserRouter>
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-          <main className="flex-1 px-4 md:px-8 h-[80vw]">
+          <main className="flex-1 px-4 md:px-8 min-h-[80vh]">
             <Routes>
-              <Route path="/" element={<Dashboard darkMode={darkMode} goals={goals} />} />
-              <Route path="/goals" element={<GoalDetails darkMode={darkMode} goals={goals} setGoals={setGoals} />} />
-              <Route path="/insights" element={<Insights darkMode={darkMode} goals={goals} />} />
+              <Route
+                path="/"
+                element={<Dashboard darkMode={darkMode} goals={goals} />}
+              />
+              <Route
+                path="/goals"
+                element={<GoalDetails darkMode={darkMode} goals={goals} setGoals={setGoals} />}
+              />
+              <Route
+                path="/insights"
+                element={<Insights darkMode={darkMode} goals={goals} />}
+              />
               <Route path="/tips" element={<Tips darkMode={darkMode} />} />
               <Route path="/login" element={<Login darkMode={darkMode} />} />
               <Route path="/signup" element={<Signup darkMode={darkMode} />} />

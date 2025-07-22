@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-const GoalDetails = ({ darkMode }) => {
-  const [goals, setGoals] = useState([
-    { id: 1, name: "Emergency Fund", target: 100000, saved: 30000 },
-    { id: 2, name: "New Laptop", target: 80000, saved: 20000 },
-  ]);
-
+const GoalDetails = ({ darkMode, goals, setGoals }) => {
   const [newGoal, setNewGoal] = useState({ name: "", target: "" });
   const [showForm, setShowForm] = useState(false);
 
@@ -57,10 +52,7 @@ const GoalDetails = ({ darkMode }) => {
     setEditGoalData({ name: "", target: "" });
   };
 
-  // Calculate progress percentage
-  const getProgress = (saved, target) => {
-    return ((saved / target) * 100).toFixed(1);
-  };
+  const getProgress = (saved, target) => ((saved / target) * 100).toFixed(1);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
@@ -82,28 +74,20 @@ const GoalDetails = ({ darkMode }) => {
 
       {/* Add Goal Form */}
       {showForm && (
-        <div
-          className={`p-4 mb-6 rounded-lg shadow-md max-w-md mx-auto ${
-            darkMode ? "bg-gray-800" : "bg-white"
-          }`}
-        >
+        <div className={`p-4 mb-6 rounded-lg shadow-md max-w-md mx-auto ${darkMode ? "bg-gray-800" : "bg-white"}`}>
           <input
             type="text"
             placeholder="Goal Name"
             value={newGoal.name}
             onChange={(e) => setNewGoal({ ...newGoal, name: e.target.value })}
-            className={`w-full p-2 mb-3 rounded border ${
-              darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
-            }`}
+            className={`w-full p-2 mb-3 rounded border ${darkMode ? "bg-gray-700 text-white" : "bg-gray-100"}`}
           />
           <input
             type="number"
             placeholder="Target Amount"
             value={newGoal.target}
             onChange={(e) => setNewGoal({ ...newGoal, target: e.target.value })}
-            className={`w-full p-2 mb-3 rounded border ${
-              darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
-            }`}
+            className={`w-full p-2 mb-3 rounded border ${darkMode ? "bg-gray-700 text-white" : "bg-gray-100"}`}
           />
           <button
             onClick={addGoal}
@@ -119,31 +103,22 @@ const GoalDetails = ({ darkMode }) => {
       )}
 
       {/* Goals List */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-3 gap-6">
         {goals.map((goal) => (
-          <div
-            key={goal.id}
-            className={`p-6 rounded-lg shadow-md flex flex-col ${
-              darkMode ? "bg-gray-800" : "bg-white"
-            }`}
-          >
+          <div key={goal.id} className={`p-6 rounded-lg shadow-md flex flex-col ${darkMode ? "bg-gray-800" : "bg-white"}`}>
             {editGoalId === goal.id ? (
               <>
                 <input
                   type="text"
                   value={editGoalData.name}
                   onChange={(e) => setEditGoalData({ ...editGoalData, name: e.target.value })}
-                  className={`w-full p-2 mb-3 rounded border ${
-                    darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
-                  }`}
+                  className={`w-full p-2 mb-3 rounded border ${darkMode ? "bg-gray-700 text-white" : "bg-gray-100"}`}
                 />
                 <input
                   type="number"
                   value={editGoalData.target}
                   onChange={(e) => setEditGoalData({ ...editGoalData, target: e.target.value })}
-                  className={`w-full p-2 mb-3 rounded border ${
-                    darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
-                  }`}
+                  className={`w-full p-2 mb-3 rounded border ${darkMode ? "bg-gray-700 text-white" : "bg-gray-100"}`}
                 />
                 <button
                   onClick={() => saveEditedGoal(goal.id)}
@@ -174,7 +149,7 @@ const GoalDetails = ({ darkMode }) => {
                 </p>
 
                 {/* Action Buttons */}
-                <div className="mt-4 flex justify-between gap-5">
+                <div className="mt-4 flex justify-between">
                   <button
                     onClick={() => addMoney(goal.id)}
                     className={`px-3 py-2 rounded-md font-semibold ${
